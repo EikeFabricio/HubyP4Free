@@ -21,7 +21,7 @@ public class DuelX1 implements CommandExecutor {
 
         Player p = (Player) sender;
         String targetName = args[0];
-        Player target = Bukkit.getPlayerExact(targetName);
+        Player target = Bukkit.getPlayer(targetName);
 
         if (target == null) p.sendMessage("§cEste usuário está offline");
 
