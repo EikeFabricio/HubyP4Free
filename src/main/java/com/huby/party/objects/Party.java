@@ -1,4 +1,4 @@
-package com.huby.party;
+package com.huby.party.objects;
 
 import com.huby.party.controller.PartyController;
 import org.bukkit.entity.Player;
@@ -24,6 +24,5 @@ public class Party {
     public void create() {
         PartyController.getController().createParty(this);
     }
-
 
 }

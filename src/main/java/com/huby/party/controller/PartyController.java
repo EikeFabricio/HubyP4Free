@@ -1,9 +1,9 @@
 package com.huby.party.controller;
 
-import com.huby.HubyP4Free;
-import com.huby.party.Party;
+import com.huby.party.objects.Party;
 import com.huby.party.events.PartyCreateEvent;
 import com.huby.party.events.PartyDeleteEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class PartyController {
     public void createParty(Party party) {
         PartyCreateEvent partyCreateEvent = new PartyCreateEvent(party);
 
-        HubyP4Free.getPlugin(HubyP4Free.class).getServer().getPluginManager().callEvent(partyCreateEvent);
+        Bukkit.getPluginManager().callEvent(partyCreateEvent);
 
         if (partyCreateEvent.isCancelled()) return;
 
@@ -41,7 +41,7 @@ public class PartyController {
     public void deleteParty(Party party) {
         PartyDeleteEvent partyDeleteEvent = new PartyDeleteEvent(party);
 
-        HubyP4Free.getPlugin(HubyP4Free.class).getServer().getPluginManager().callEvent(partyDeleteEvent);
+        Bukkit.getPluginManager().callEvent(partyDeleteEvent);
 
         if (!partyDeleteEvent.isCancelled()) return;
 

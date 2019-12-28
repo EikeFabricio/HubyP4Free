@@ -1,6 +1,6 @@
 package com.huby.party.events;
 
-import com.huby.party.Party;
+import com.huby.party.objects.Party;
 import com.huby.party.events.model.PartyEvent;
 
 public class PartyCreateEvent extends PartyEvent {
