@@ -3,22 +3,20 @@ package com.huby.party.objects;
 import com.huby.party.controller.PartyController;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Party {
 
-    private final Player one;
-    private final Player two;
+    private final LinkedList<Player> players;
 
-    public Party(Player one, Player two) {
-        this.one = one;
-        this.two = two;
+    public Party(Player... players) {
+        this.players = new LinkedList<>();
+        this.players.addAll(Arrays.asList(players));
     }
 
-    public Player getOne() {
-        return one;
-    }
-
-    public Player getTwo() {
-        return two;
+    public LinkedList<Player> getPlayers() {
+        return players;
     }
 
     public void create() {
