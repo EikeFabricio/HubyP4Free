@@ -47,7 +47,11 @@ public class PartyController {
     }
 
     public boolean isOnParty(Player player) {
-        return pool.stream().filter(p -> p.getOne() == player || p.getTwo() == player).findFirst().orElse(null) != null;
+        return pool.stream().filter(p -> p.getPlayers().contains(player)).findFirst().orElse(null) != null;
+    }
+
+    public Party getPartyAt(Player player) {
+        return pool.stream().filter(p -> p.getPlayers().contains(player)).findFirst().orElse(null);
     }
 
 }

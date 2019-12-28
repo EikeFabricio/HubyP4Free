@@ -1,4 +1,4 @@
-package com.huby.party.listeners;
+package com.huby.party.listeners.invite;
 
 import com.huby.party.events.invite.InvitePlayerEvent;
 import org.bukkit.entity.Player;
