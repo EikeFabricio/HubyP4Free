@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 
 public class PartyEvent extends Event implements Cancellable {
 
-    private boolean cancelled;
+    private boolean cancelled = false;
 
     private static HandlerList handlerList = new HandlerList();
 

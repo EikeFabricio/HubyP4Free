@@ -10,8 +10,6 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.Arrays;
-import java.util.Base64;
-import java.util.UUID;
 
 public class ItemBuilder {
 
@@ -28,6 +26,10 @@ public class ItemBuilder {
 
     public ItemBuilder(Material material, int amount, short durability) {
         this.itemstack = new ItemStack(material, amount, durability);
+    }
+
+    public static ItemBuilder of(Material material) {
+        return new ItemBuilder(material);
     }
 
     public ItemBuilder setDisplayName(String displayName) {
@@ -78,6 +80,10 @@ public class ItemBuilder {
         return null;
     }
 
+    public ItemBuilder setAmount(int amount) {
+        itemstack.setAmount(amount);
+        return this;
+    }
 
     public ItemMeta getItemMeta() {
         return this.itemmeta;
@@ -90,6 +96,5 @@ public class ItemBuilder {
     public ItemStack build() {
         return itemstack;
     }
-
 
 }

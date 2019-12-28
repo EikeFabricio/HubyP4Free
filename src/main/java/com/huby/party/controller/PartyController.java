@@ -6,24 +6,23 @@ import com.huby.party.events.PartyDeleteEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
 
 public class PartyController {
 
     private static final PartyController controller = new PartyController();
 
-    private final Map<Player, Player> pool;
+    private final LinkedList<Party> pool;
 
     public static PartyController getController() {
         return controller;
     }
 
     private PartyController() {
-        this.pool = new HashMap<>();
+        this.pool = new LinkedList<>();
     }
 
-    public Map<Player, Player> getPool() {
+    public LinkedList<Party> getPool() {
         return pool;
     }
 
@@ -34,8 +33,7 @@ public class PartyController {
 
         if (partyCreateEvent.isCancelled()) return;
 
-        pool.put(party.getOne(), party.getTwo());
-        pool.put(party.getTwo(), party.getOne());
+        pool.add(party);
     }
 
     public void deleteParty(Party party) {
@@ -45,17 +43,11 @@ public class PartyController {
 
         if (!partyDeleteEvent.isCancelled()) return;
 
-        pool.remove(party.getOne());
-        pool.remove(party.getTwo());
+        pool.remove(party);
     }
 
     public boolean isOnParty(Player player) {
-        return pool.containsKey(player);
+        return pool.stream().filter(p -> p.getOne() == player || p.getTwo() == player).findFirst().orElse(null) != null;
     }
-
-
-
-
-
 
 }

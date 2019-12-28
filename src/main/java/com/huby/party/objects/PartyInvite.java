@@ -1,5 +1,6 @@
 package com.huby.party.objects;
 
+import com.huby.party.controller.InviteController;
 import org.bukkit.entity.Player;
 
 public class PartyInvite {
@@ -21,11 +22,15 @@ public class PartyInvite {
     }
 
     public void accept() {
-
+        InviteController.getController().accept(this);
     }
 
     public void decline() {
+        InviteController.getController().decline(this);
+    }
 
+    public void create() {
+        InviteController.getController().create(this);
     }
 
  }
