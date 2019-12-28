@@ -1,5 +1,6 @@
 package com.huby;
 
+import com.huby.commands.DuelX1;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +15,7 @@ public final class HubyP4Free extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getCommand("duelo").setExecutor(new DuelX1());
         getPackages(getFile(), "com.huby").stream().filter(c -> {
             try {
                 return c.newInstance() instanceof Listener;
@@ -40,7 +42,7 @@ public final class HubyP4Free extends JavaPlugin {
         try {
             JarFile jar = new JarFile(file);
             for (Enumeration<JarEntry> entry = jar.entries(); entry.hasMoreElements();) {
-                JarEntry jarEntry = (JarEntry) entry.nextElement();
+                JarEntry jarEntry = entry.nextElement();
                 String named = jarEntry.getName().replace("/", ".");
                 if ((named.startsWith(name)) && (named.endsWith(".class")) && (!named.contains("$"))) {
                     classes.add(Class.forName(named.substring(0, named.length() - 6)));

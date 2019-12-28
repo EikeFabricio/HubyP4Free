@@ -2,3 +2,5 @@ name: HubyP4Free
 version: ${project.version}
 main: com.huby.HubyP4Free
 authors: [Eike, Tuca]
+commands:
+  duelo:
