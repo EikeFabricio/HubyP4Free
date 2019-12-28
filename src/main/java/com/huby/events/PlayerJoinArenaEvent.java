@@ -17,6 +17,9 @@ public class PlayerJoinArenaEvent extends EventWrapper {
     private Player challenged;
 
     public PlayerJoinArenaEvent() {
+
+        this.challenger = challenger;
+        this.challenged = challenged;
         Bukkit.getOnlinePlayers().stream().filter(onlines -> onlines != challenger).filter(onlines -> onlines != challenged).forEach(onlines -> {
             challenged.hidePlayer(onlines);
             challenger.hidePlayer(onlines);
